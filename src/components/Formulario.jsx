@@ -2,8 +2,12 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Alerta from "../components/Alerta";
+import { useNavigate } from "react-router-dom";
+import { createClientAPI } from "../api/clientes";
 
 const Formulario = () => {
+  const navigate = useNavigate();
+
   const nuevoClienteSchema = Yup.object().shape({
     nombre: Yup.string()
       .required("Campo requerido")
@@ -25,23 +29,13 @@ const Formulario = () => {
     notas: "",
   };
 
-  const handleSubmit = async (values) => {
-    try {
-      const url = "http://localhost:4000/clientes";
-      const respuesta = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const resultado = await respuesta.json();
-      console.log(respuesta);
-
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSubmit = async (values, { resetForm }) => {
+    createClientAPI(values).then((data) => {
+      if (data) {
+        resetForm();
+        navigate("/clientes");
+      }
+    });
   };
 
   return (
