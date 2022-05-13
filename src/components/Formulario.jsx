@@ -9,10 +9,12 @@ const Formulario = () => {
       .required("Campo requerido")
       .max(20, "Nombre muy largo")
       .min(3, "El nombre es muy corto"),
-    empresa: "",
-    email: "",
-    telefono: "",
-    notas: "",
+    empresa: Yup.string().required("Campo requerido"),
+    email: Yup.string().required("Campo requerido").email("Email invalido"),
+    telefono: Yup.number()
+      .typeError("El numero no es valido")
+      .integer("El numero no es valido")
+      .positive("El numero no es valido")
   });
 
   const initialValues = {
@@ -68,6 +70,9 @@ const Formulario = () => {
                 type="text"
                 className="mt-2 block w-full p-3 bg-red-50"
               />
+              {errors.empresa && touched.empresa ? (
+                <Alerta>{errors.empresa}</Alerta>
+              ) : null}
             </div>
 
             <div className="mb-4">
@@ -81,6 +86,9 @@ const Formulario = () => {
                 type="email"
                 className="mt-2 block w-full p-3 bg-red-50"
               />
+              {errors.email && touched.email ? (
+                <Alerta>{errors.email}</Alerta>
+              ) : null}
             </div>
 
             <div className="mb-4">
@@ -94,6 +102,9 @@ const Formulario = () => {
                 type="tel"
                 className="mt-2 block w-full p-3 bg-red-50"
               />
+              {errors.telefono && touched.telefono ? (
+                <Alerta>{errors.telefono}</Alerta>
+              ) : null}
             </div>
 
             <div className="mb-4">
