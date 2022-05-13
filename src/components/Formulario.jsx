@@ -14,7 +14,7 @@ const Formulario = () => {
     telefono: Yup.number()
       .typeError("El numero no es valido")
       .integer("El numero no es valido")
-      .positive("El numero no es valido")
+      .positive("El numero no es valido"),
   });
 
   const initialValues = {
@@ -25,8 +25,23 @@ const Formulario = () => {
     notas: "",
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    try {
+      const url = "http://localhost:4000/clientes";
+      const respuesta = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const resultado = await respuesta.json();
+      console.log(respuesta);
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -51,7 +66,7 @@ const Formulario = () => {
                 name="nombre"
                 placeholder="Ingresa el Nombre"
                 type="text"
-                className="mt-2 block w-full p-3 bg-red-50"
+                className="mt-2 block w-full p-3 bg-gray-200"
               />
 
               {errors.nombre && touched.nombre ? (
@@ -68,7 +83,7 @@ const Formulario = () => {
                 id="empresa"
                 placeholder="Empresa el Cliente"
                 type="text"
-                className="mt-2 block w-full p-3 bg-red-50"
+                className="mt-2 block w-full p-3 bg-gray-200"
               />
               {errors.empresa && touched.empresa ? (
                 <Alerta>{errors.empresa}</Alerta>
@@ -84,7 +99,7 @@ const Formulario = () => {
                 id="email"
                 placeholder="Ingresa el email"
                 type="email"
-                className="mt-2 block w-full p-3 bg-red-50"
+                className="mt-2 block w-full p-3 bg-gray-200"
               />
               {errors.email && touched.email ? (
                 <Alerta>{errors.email}</Alerta>
@@ -100,7 +115,7 @@ const Formulario = () => {
                 name="telefono"
                 placeholder="Ingresa el # telefono"
                 type="tel"
-                className="mt-2 block w-full p-3 bg-red-50"
+                className="mt-2 block w-full p-3 bg-gray-200"
               />
               {errors.telefono && touched.telefono ? (
                 <Alerta>{errors.telefono}</Alerta>
@@ -117,7 +132,7 @@ const Formulario = () => {
                 name="notas"
                 placeholder="Notas"
                 type="text"
-                className="mt-2 block w-full p-3 bg-red-50 h-40"
+                className="mt-2 block w-full p-3 bg-gray-200 h-40"
               />
             </div>
 
