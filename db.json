@@ -1,3 +1,36 @@
 {
-    "clientes": []
+  "clientes": [
+    {
+      "nombre": "Velfin Velasquez",
+      "empresa": "velfin enterprice",
+      "email": "velfinvelasquez@gmail.com",
+      "telefono": "0960091634",
+      "notas": "",
+      "id": 1
+    },
+    {
+      "nombre": "Velfin Velasquez",
+      "empresa": "velfin enterprice",
+      "email": "velfinvelasquez@gmail.com",
+      "telefono": "0960091634",
+      "notas": "",
+      "id": 2
+    },
+    {
+      "nombre": "Maria",
+      "empresa": "mari ",
+      "email": "maria@gmail.com",
+      "telefono": "88888888",
+      "notas": "soy gamer",
+      "id": 3
+    },
+    {
+      "nombre": "carmen",
+      "empresa": "marmenia",
+      "email": "carmen@gmail.com",
+      "telefono": "",
+      "notas": "",
+      "id": 4
+    }
+  ]
 }

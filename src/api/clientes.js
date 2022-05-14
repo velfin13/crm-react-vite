@@ -30,3 +30,15 @@ export const getClientAPI = async () => {
     console.log(error);
   }
 };
+
+export const getClientByIdAPI = async (id) => {
+  try {
+    const url = `${BASE_URL}/clientes/${id}`;
+    const respuesta = await fetch(url);
+
+    const resultado = await respuesta.json();
+    return resultado;
+  } catch (error) {
+    console.log(error);
+  }
+};
