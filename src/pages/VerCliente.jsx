@@ -15,7 +15,6 @@ const VerCliente = () => {
     });
   }, []);
 
-  console.log(Object.keys(cliente) === 0);
 
   return (
     <div>
