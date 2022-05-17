@@ -1,28 +1,3 @@
 {
-  "clientes": [
-    {
-      "nombre": "Velfin editado",
-      "empresa": "velfin malena se aman",
-      "email": "velfinvelasquez@gmail.com",
-      "telefono": "",
-      "notas": "",
-      "id": 3
-    },
-    {
-      "nombre": "Maria del barrio",
-      "empresa": "marmenia",
-      "email": "carmen@gmail.com",
-      "telefono": "",
-      "notas": "",
-      "id": 4
-    },
-    {
-      "nombre": "Velfin editado",
-      "empresa": "marmenia",
-      "email": "velfinvelasquez@gmail.com",
-      "telefono": "",
-      "notas": "",
-      "id": 5
-    }
-  ]
+  "clientes": []
 }
