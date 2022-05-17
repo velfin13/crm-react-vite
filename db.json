@@ -17,7 +17,7 @@
       "id": 2
     },
     {
-      "nombre": "Maria",
+      "nombre": "Maria del barrio",
       "empresa": "mari ",
       "email": "maria@gmail.com",
       "telefono": "88888888",
@@ -47,6 +47,14 @@
       "telefono": "0960091634",
       "notas": "",
       "id": 6
+    },
+    {
+      "nombre": "Velfin editado",
+      "empresa": "velfin malena se aman",
+      "email": "velfinvelasqueztest@gmail.com",
+      "telefono": "",
+      "notas": "",
+      "id": 7
     }
   ]
 }

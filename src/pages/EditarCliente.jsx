@@ -19,7 +19,13 @@ const EditarCliente = () => {
     <>
       <h1 className="font-black text-4xl text-blue-900">Editar Cliente</h1>
       <p className="mt-3">Formulario de Edición</p>
-      <Formulario cliente={cliente} />
+      {Object.keys(cliente).length === 0 ? (
+        <p className="p-2 bg-yellow-500 rounded-md shadow-md text-center text-white font-bold mt-5">
+          Usuario no encontrado
+        </p>
+      ) : (
+        <Formulario cliente={cliente} cargando={cargando} />
+      )}
     </>
   );
 };

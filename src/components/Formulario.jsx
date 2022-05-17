@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Alerta from "../components/Alerta";
 import { useNavigate } from "react-router-dom";
-import { createClientAPI } from "../api/clientes";
+import { createClientAPI, editClientAPI } from "../api/clientes";
 
-const Formulario = ({ cliente }) => {
+const Formulario = ({ cliente, cargando }) => {
   const navigate = useNavigate();
 
   const nuevoClienteSchema = Yup.object().shape({
@@ -30,121 +30,139 @@ const Formulario = ({ cliente }) => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    createClientAPI(values).then((data) => {
-      if (data) {
-        resetForm();
-        navigate("/clientes");
-      }
-    });
+    if (cliente.id) {
+      editClientAPI(values, cliente.id).then((data) => {
+        if (data) {
+          resetForm();
+          navigate("/clientes");
+        }
+      });
+    } else {
+      createClientAPI(values).then((data) => {
+        if (data) {
+          resetForm();
+          navigate("/clientes");
+        }
+      });
+    }
   };
 
   return (
-    <div className="mt-10 bg-white px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
-      <h1 className="text-gray-600 font-bold text-xl uppercase text-center">
-        {cliente?.nombre ? "Editar Registro" : "Nuevo Regitro"}
-      </h1>
+    <>
+      {cargando ? (
+        <p className="text-center mt-10">Cargando .....</p>
+      ) : (
+        <div className="mt-10 bg-white px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
+          <h1 className="text-gray-600 font-bold text-xl uppercase text-center">
+            {cliente?.nombre ? "Editar Registro" : "Nuevo Regitro"}
+          </h1>
 
-      <Formik
-        initialValues={initialValues}
-        enableReinitialize={true}
-        onSubmit={handleSubmit}
-        validationSchema={nuevoClienteSchema}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            <div className="mb-4">
-              <label className="text-gray-800 font-bold" htmlFor="nombre">
-                Nombre
-              </label>
-              <Field
-                id="nombre"
-                name="nombre"
-                placeholder="Ingresa el Nombre"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-200"
-              />
+          <Formik
+            initialValues={initialValues}
+            enableReinitialize={true}
+            onSubmit={handleSubmit}
+            validationSchema={nuevoClienteSchema}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div className="mb-4">
+                  <label className="text-gray-800 font-bold" htmlFor="nombre">
+                    Nombre
+                  </label>
+                  <Field
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ingresa el Nombre"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-200"
+                  />
 
-              {errors.nombre && touched.nombre ? (
-                <Alerta>{errors.nombre}</Alerta>
-              ) : null}
-            </div>
+                  {errors.nombre && touched.nombre ? (
+                    <Alerta>{errors.nombre}</Alerta>
+                  ) : null}
+                </div>
 
-            <div className="mb-4">
-              <label className="text-gray-800 font-bold" htmlFor="empresa">
-                Empresa
-              </label>
-              <Field
-                name="empresa"
-                id="empresa"
-                placeholder="Empresa el Cliente"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-200"
-              />
-              {errors.empresa && touched.empresa ? (
-                <Alerta>{errors.empresa}</Alerta>
-              ) : null}
-            </div>
+                <div className="mb-4">
+                  <label className="text-gray-800 font-bold" htmlFor="empresa">
+                    Empresa
+                  </label>
+                  <Field
+                    name="empresa"
+                    id="empresa"
+                    placeholder="Empresa el Cliente"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-200"
+                  />
+                  {errors.empresa && touched.empresa ? (
+                    <Alerta>{errors.empresa}</Alerta>
+                  ) : null}
+                </div>
 
-            <div className="mb-4">
-              <label className="text-gray-800 font-bold" htmlFor="email">
-                Email
-              </label>
-              <Field
-                name="email"
-                id="email"
-                placeholder="Ingresa el email"
-                type="email"
-                className="mt-2 block w-full p-3 bg-gray-200"
-              />
-              {errors.email && touched.email ? (
-                <Alerta>{errors.email}</Alerta>
-              ) : null}
-            </div>
+                <div className="mb-4">
+                  <label className="text-gray-800 font-bold" htmlFor="email">
+                    Email
+                  </label>
+                  <Field
+                    name="email"
+                    id="email"
+                    placeholder="Ingresa el email"
+                    type="email"
+                    className="mt-2 block w-full p-3 bg-gray-200"
+                  />
+                  {errors.email && touched.email ? (
+                    <Alerta>{errors.email}</Alerta>
+                  ) : null}
+                </div>
 
-            <div className="mb-4">
-              <label className="text-gray-800 font-bold" htmlFor="telefono">
-                Telefono
-              </label>
-              <Field
-                id="telefono"
-                name="telefono"
-                placeholder="Ingresa el # telefono"
-                type="tel"
-                className="mt-2 block w-full p-3 bg-gray-200"
-              />
-              {errors.telefono && touched.telefono ? (
-                <Alerta>{errors.telefono}</Alerta>
-              ) : null}
-            </div>
+                <div className="mb-4">
+                  <label className="text-gray-800 font-bold" htmlFor="telefono">
+                    Telefono
+                  </label>
+                  <Field
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Ingresa el # telefono"
+                    type="tel"
+                    className="mt-2 block w-full p-3 bg-gray-200"
+                  />
+                  {errors.telefono && touched.telefono ? (
+                    <Alerta>{errors.telefono}</Alerta>
+                  ) : null}
+                </div>
 
-            <div className="mb-4">
-              <label className="text-gray-800 font-bold" htmlFor="notas">
-                Notas
-              </label>
-              <Field
-                as="textarea"
-                id="notas"
-                name="notas"
-                placeholder="Notas"
-                type="text"
-                className="mt-2 block w-full p-3 bg-gray-200 h-40"
-              />
-            </div>
+                <div className="mb-4">
+                  <label className="text-gray-800 font-bold" htmlFor="notas">
+                    Notas
+                  </label>
+                  <Field
+                    as="textarea"
+                    id="notas"
+                    name="notas"
+                    placeholder="Notas"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-200 h-40"
+                  />
+                </div>
 
-            <input
-              type="submit"
-              value={cliente?.nombre ? "Editar Registro" : "Agregar Regitro"}
-              className="mt-5 w-full bg-blue-600 p-3 text-white uppercase font-bold text-lg rounded-md cursor-pointer transition-shadow hover:bg-blue-800"
-            />
-          </Form>
-        )}
-      </Formik>
-    </div>
+                <input
+                  type="submit"
+                  value={
+                    cliente?.nombre ? "Editar Registro" : "Agregar Regitro"
+                  }
+                  className="mt-5 w-full bg-blue-600 p-3 text-white uppercase font-bold text-lg rounded-md cursor-pointer transition-shadow hover:bg-blue-800"
+                />
+              </Form>
+            )}
+          </Formik>
+        </div>
+      )}
+    </>
   );
 };
 
 Formulario.defaultProps = {
   cliente: {},
+  cargando: false,
 };
 
 export default Formulario;
