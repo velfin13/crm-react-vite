@@ -1,8 +1,7 @@
-import { BASE_URL } from "../utils/const";
-
 export const createClientAPI = async (data) => {
   try {
-    const url = `${BASE_URL}/clientes`;
+    // const url = `${import.meta.env.VITE_BASE_URL}/clientes`;
+    const url = `${import.meta.env.VITE_BASE_URL}/clientes`;
     const respuesta = await fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
@@ -20,7 +19,7 @@ export const createClientAPI = async (data) => {
 
 export const editClientAPI = async (data, id) => {
   try {
-    const url = `${BASE_URL}/clientes/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/clientes/${id}`;
     const respuesta = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(data),
@@ -38,7 +37,7 @@ export const editClientAPI = async (data, id) => {
 
 export const getClientAPI = async () => {
   try {
-    const url = `${BASE_URL}/clientes`;
+    const url = `${import.meta.env.VITE_BASE_URL}/clientes`;
     const respuesta = await fetch(url);
 
     const resultado = await respuesta.json();
@@ -50,7 +49,7 @@ export const getClientAPI = async () => {
 
 export const getClientByIdAPI = async (id) => {
   try {
-    const url = `${BASE_URL}/clientes/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/clientes/${id}`;
     const respuesta = await fetch(url);
 
     const resultado = await respuesta.json();
@@ -62,7 +61,7 @@ export const getClientByIdAPI = async (id) => {
 
 export const deleteClientByIdAPI = async (id) => {
   try {
-    const url = `${BASE_URL}/clientes/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/clientes/${id}`;
     const respuesta = await fetch(url, {
       method: "DELETE",
       headers: {

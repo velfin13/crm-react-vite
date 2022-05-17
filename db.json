@@ -1,3 +1,12 @@
 {
-  "clientes": []
+  "clientes": [
+    {
+      "nombre": "Velfin  update",
+      "empresa": "velfin enterprice",
+      "email": "velfinvelasquez@gmail.com",
+      "telefono": "",
+      "notas": "",
+      "id": 1
+    }
+  ]
 }

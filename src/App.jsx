@@ -8,7 +8,7 @@ import VerCliente from "./pages/VerCliente";
 function App() {
   return (
     <BrowserRouter>
-      <Routes location={"/clientes"}>
+      <Routes>
         <Route path="/clientes" element={<Layout />}>
           <Route index element={<Inicio />} />
           <Route path="nuevo" element={<NuevoCliente />} />
