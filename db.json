@@ -1,31 +1,15 @@
 {
   "clientes": [
     {
-      "nombre": "Velfin Velasquez",
-      "empresa": "velfin enterprice",
+      "nombre": "Velfin editado",
+      "empresa": "velfin malena se aman",
       "email": "velfinvelasquez@gmail.com",
-      "telefono": "0960091634",
+      "telefono": "",
       "notas": "",
-      "id": 1
-    },
-    {
-      "nombre": "Velfin Velasquez",
-      "empresa": "velfin enterprice",
-      "email": "velfinvelasquez@gmail.com",
-      "telefono": "0960091634",
-      "notas": "",
-      "id": 2
-    },
-    {
-      "nombre": "Maria del barrio",
-      "empresa": "mari ",
-      "email": "maria@gmail.com",
-      "telefono": "88888888",
-      "notas": "soy gamer",
       "id": 3
     },
     {
-      "nombre": "carmen",
+      "nombre": "Maria del barrio",
       "empresa": "marmenia",
       "email": "carmen@gmail.com",
       "telefono": "",
@@ -33,28 +17,12 @@
       "id": 4
     },
     {
-      "nombre": "Velfin Velasquez",
-      "empresa": "velfin enterprice",
-      "email": "velfinvelasquez@gmail.com",
-      "telefono": "0960091634",
-      "notas": "",
-      "id": 5
-    },
-    {
-      "nombre": "Velfin Velasquez",
-      "empresa": "velfin enterprice",
-      "email": "velfinvelasquez@gmail.com",
-      "telefono": "0960091634",
-      "notas": "",
-      "id": 6
-    },
-    {
       "nombre": "Velfin editado",
-      "empresa": "velfin malena se aman",
-      "email": "velfinvelasqueztest@gmail.com",
+      "empresa": "marmenia",
+      "email": "velfinvelasquez@gmail.com",
       "telefono": "",
       "notas": "",
-      "id": 7
+      "id": 5
     }
   ]
 }

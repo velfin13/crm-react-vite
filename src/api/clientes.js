@@ -59,3 +59,18 @@ export const getClientByIdAPI = async (id) => {
     console.log(error);
   }
 };
+
+export const deleteClientByIdAPI = async (id) => {
+  try {
+    const url = `${BASE_URL}/clientes/${id}`;
+    const respuesta = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+};
